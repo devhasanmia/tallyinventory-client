@@ -1,9 +1,9 @@
+import AdminLayout from "./components/layouts/AdminLayout"
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <AdminLayout/>
     </>
   )
 }
