@@ -1,9 +1,13 @@
 import { useState } from 'react';
-
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubmenuOpen, setSubmenuOpen] = useState(false);
-
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
   return (
     <div className="min-h-screen flex bg-gray-50">
       {/* Sidebar */}
@@ -14,10 +18,31 @@ const AdminDashboard = () => {
         } h-screen flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-xl`}
       >
         <div>
-          <div className="p-6 border-b border-gray-700">
-            <h1 className="text-2xl font-bold">Tally Inventory</h1>
-            <p className="text-gray-400 text-sm mt-1">Inventory Management System</p>
-          </div>
+        <div className="p-6 border-b border-gray-700 flex items-center space-x-4">
+  <div className="relative">
+    <img 
+      src="/profile.jpg" 
+      alt="Admin" 
+      className="w-16 h-16 rounded-full border-2 border-blue-600 object-cover shadow-lg"
+    />
+    <span className="absolute bottom-1 right-1 w-3 h-3 bg-green-400 border-2 border-slate-900 rounded-full animate-pulse"></span>
+  </div>
+  <div>
+    <h1 className="font-bold text-blue-300">MD. HASAN MIA</h1>
+    <p className="text-sm text-gray-300"><span className="text-white">Super Admin</span></p>
+  
+    <p className="text-xs text-gray-400">{formattedDate}</p>
+    </div>
+    
+</div>
+
+
+
+
+
+
+
+
           <nav className="mt-4 space-y-2">
             <a href="#" className="flex items-center p-4 hover:bg-gray-700/50 group">
               <svg className="w-5 h-5 mr-3 group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
