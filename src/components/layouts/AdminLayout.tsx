@@ -13,36 +13,26 @@ const AdminDashboard = () => {
       {/* Sidebar */}
       <aside
         id="sidebar"
-        className={`bg-slate-900 text-white ${
-          isSidebarOpen ? 'w-64' : 'w-0'
-        } h-screen flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-xl`}
+        className={`bg-slate-900 text-white ${isSidebarOpen ? 'w-64' : 'w-0'
+          } h-screen flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-xl`}
       >
         <div>
-        <div className="p-6 border-b border-gray-700 flex items-center space-x-4">
-  <div className="relative">
-    <img 
-      src="/profile.jpg" 
-      alt="Admin" 
-      className="w-16 h-16 rounded-full border-2 border-blue-600 object-cover shadow-lg"
-    />
-    <span className="absolute bottom-1 right-1 w-3 h-3 bg-green-400 border-2 border-slate-900 rounded-full animate-pulse"></span>
-  </div>
-  <div>
-    <h1 className="font-bold text-blue-300">MD. HASAN MIA</h1>
-    <p className="text-sm text-gray-300"><span className="text-white">Super Admin</span></p>
-  
-    <p className="text-xs text-gray-400">{formattedDate}</p>
-    </div>
-    
-</div>
+          <div className="p-6 border-b border-gray-700 flex items-center space-x-4">
+            <div className="relative">
+              <img
+                src="/profile.jpg"
+                alt="Admin"
+                className="w-16 h-16 rounded-full border-2 border-blue-600 object-cover shadow-lg"
+              />
+              <span className="absolute bottom-1 right-1 w-3 h-3 bg-green-400 border-2 border-slate-900 rounded-full animate-pulse"></span>
+            </div>
+            <div>
+              <h1 className="font-bold text-blue-300">MD. HASAN MIA</h1>
+              <p className="text-sm text-gray-300"><span className="text-white">Super Admin</span></p>
 
-
-
-
-
-
-
-
+              <p className="text-xs text-gray-400">{formattedDate}</p>
+            </div>
+          </div>
           <nav className="mt-4 space-y-2">
             <a href="#" className="flex items-center p-4 hover:bg-gray-700/50 group">
               <svg className="w-5 h-5 mr-3 group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,14 +91,29 @@ const AdminDashboard = () => {
       <div className="flex-1 flex flex-col">
         <header className="bg-white shadow-sm sticky top-0 z-30">
           <div className="flex items-center justify-between p-4">
-            <button onClick={() => setSidebarOpen(!isSidebarOpen)} className="p-2 rounded-lg hover:bg-gray-100">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            {/* Sidebar Toggle Button */}
+            <button
+              onClick={() => setSidebarOpen(!isSidebarOpen)}
+              className="p-2 rounded-lg hover:bg-gray-100 transition-all duration-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
+                />
               </svg>
             </button>
-            <div className="flex items-center space-x-4"></div>
           </div>
         </header>
+
 
         <main className="p-6">
           <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
