@@ -11,7 +11,7 @@ const AdminDashboard = () => {
       {/* Main Content Start */}
       <div className="flex-1 flex flex-col">
         {/* Header Start */}
-        <header className="bg-white shadow-sm sticky top-0 z-30">
+        <header className="bg-white shadow-sm  top-0 z-30">
           <div className="flex items-center justify-between p-4">
             {/* Sidebar Toggle Button */}
             <button

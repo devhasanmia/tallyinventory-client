@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { getTodayDate } from "../../../utils/date/getTodayDate";
-import { HiOutlineClipboardDocumentList, HiSquare3Stack3D } from "react-icons/hi2";
+import {
+  HiOutlineClipboardDocumentList,
+  HiSquare3Stack3D,
+} from "react-icons/hi2";
 import { TbReportAnalytics } from "react-icons/tb";
 import { LuSettings, LuUserPlus } from "react-icons/lu";
-import { MdManageAccounts, MdMenuBook, MdOutlineWorkspacePremium } from "react-icons/md";
+import {
+  MdManageAccounts,
+  MdMenuBook,
+  MdOutlineWorkspacePremium,
+} from "react-icons/md";
 import { IoBagAdd, IoPeopleSharp } from "react-icons/io5";
 import { ImQrcode } from "react-icons/im";
 import { AiFillDashboard, AiFillProduct } from "react-icons/ai";
+import { Link } from "react-router";
 
 const items = [
   {
@@ -24,9 +32,17 @@ const items = [
     label: "Product Management",
     subItems: [
       { label: "Add Product", icon: <IoBagAdd />, link: "/add-product" },
-      { label: "Product List", icon: <HiSquare3Stack3D />, link: "/product-list" },
+      {
+        label: "Product List",
+        icon: <HiSquare3Stack3D />,
+        link: "/product-list",
+      },
       { label: "Print Labels", icon: <ImQrcode />, link: "/print-labels" },
-      { label: "Trending Product", icon: <MdOutlineWorkspacePremium />, link: "/print-labels" },
+      {
+        label: "Trending Product",
+        icon: <MdOutlineWorkspacePremium />,
+        link: "/print-labels",
+      },
     ],
   },
   {
@@ -34,8 +50,16 @@ const items = [
     label: "Customer Management",
     subItems: [
       { label: "Add Customer", icon: <LuUserPlus />, link: "/add-customer" },
-      { label: "Customer List", icon: <IoPeopleSharp />, link: "/customer-list" },
-      { label: "Customer Due Report", icon: <MdMenuBook />, link: "/customer-due" },
+      {
+        label: "Customer List",
+        icon: <IoPeopleSharp />,
+        link: "/customer-list",
+      },
+      {
+        label: "Customer Due Report",
+        icon: <MdMenuBook />,
+        link: "/customer-due",
+      },
     ],
   },
   {
@@ -62,12 +86,12 @@ const items = [
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
-
   return (
     <aside
       id="sidebar"
-      className={`bg-slate-900 text-white ${isOpen ? "w-64" : "w-0"
-        } flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-xl`}
+      className={`bg-slate-900 text-white ${
+        isOpen ? "w-64" : "w-0"
+      } flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-xl`}
     >
       {/* Top: Profile */}
       <div>
@@ -100,7 +124,9 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                   <>
                     <button
                       onClick={() =>
-                        setOpenSubmenuIndex(openSubmenuIndex === index ? null : index)
+                        setOpenSubmenuIndex(
+                          openSubmenuIndex === index ? null : index
+                        )
                       }
                       className="flex items-center justify-between w-full p-4 hover:bg-gray-700/50 focus:outline-none group"
                     >
@@ -111,8 +137,9 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                         {item.label}
                       </span>
                       <svg
-                        className={`w-4 h-4 transition-transform ${openSubmenuIndex === index ? "rotate-180" : ""
-                          }`}
+                        className={`w-4 h-4 transition-transform ${
+                          openSubmenuIndex === index ? "rotate-180" : ""
+                        }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -126,31 +153,34 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                       </svg>
                     </button>
                     <div
-                      className={`space-y-1 overflow-hidden transition-all duration-300 ease-in-out ${openSubmenuIndex === index ? "max-h-96" : "max-h-0"
-                        }`}
+                      className={`space-y-1 overflow-hidden transition-all duration-300 ease-in-out ${
+                        openSubmenuIndex === index ? "max-h-96" : "max-h-0"
+                      }`}
                     >
                       {item.subItems.map((sub, subIndex) => (
-                        <a
+                        <Link
                           key={subIndex}
-                          href={sub.link}
+                          to={sub.link}
                           className="flex items-center pl-12 p-4 text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 transition group"
                         >
                           <span className="mr-2 text-gray-400 group-hover:text-blue-400">
                             {sub.icon}
                           </span>
                           {sub.label}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </>
                 ) : (
-                  <a
-                    href={item.link}
+                  <Link
+                    to={`${item?.link}`}
                     className="flex items-center p-4 hover:bg-gray-700/50 group"
                   >
-                    <span className="mr-3 text-lg group-hover:text-blue-400">{item.icon}</span>
+                    <span className="mr-3 text-lg group-hover:text-blue-400">
+                      {item.icon}
+                    </span>
                     {item.label}
-                  </a>
+                  </Link>
                 )}
               </div>
             );
