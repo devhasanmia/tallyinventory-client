@@ -10,5 +10,3 @@ export const getTodayDate = (
     return today.toLocaleDateString(locale, options);
   };
 
-
-
