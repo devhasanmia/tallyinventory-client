@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import Sidebar from './sidebar/Sidebar';
 import { Outlet } from 'react-router';
+
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <div className="min-h-screen flex bg-gray-50 w-full">
       {/* Sidebar Start */}
       <Sidebar isOpen={isSidebarOpen} />
       {/* Sidebar End */}
+
       {/* Main Content Start */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header Start */}
-        <header className="bg-white shadow-sm  top-0 z-30">
+        <header className="bg-white shadow-sm top-0 z-30">
           <div className="flex items-center justify-between p-4">
             {/* Sidebar Toggle Button */}
             <button
@@ -36,9 +39,10 @@ const AdminDashboard = () => {
           </div>
         </header>
         {/* Header End */}
+
         {/* Main Content Start */}
-        <main className="p-6">
-          <Outlet/>
+        <main className="p-6 overflow-x-hidden">
+          <Outlet />
         </main>
         {/* Main Content End */}
       </div>

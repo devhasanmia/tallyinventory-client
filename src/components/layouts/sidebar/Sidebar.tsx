@@ -70,7 +70,12 @@ const items = [
   {
     label: "Brands",
     icon: <HiSquare3Stack3D />,
-    link: "/brand-management",
+    link: "/brand",
+  },
+  {
+    label: "Units",
+    icon: <HiSquare3Stack3D />,
+    link: "/unit",
   },
   {
     icon: <TbReportAnalytics />,

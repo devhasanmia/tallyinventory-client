@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router";
 import AdminDashboard from "../components/layouts/AdminLayout";
 import Dashboard from "../pages/Dashboard";
 import NotFound from "../pages/NotFound";
+import Brand from "../pages/Brand";
+import Unit from "../pages/Unit";
 
 const router = createBrowserRouter([
     {
@@ -11,6 +13,14 @@ const router = createBrowserRouter([
             {
                 path: "dashboard",
                 element: <Dashboard />
+            },
+            {
+                path: "brand",
+                element: <Brand />
+            },
+            {
+                path: "unit",
+                element: <Unit />
             },
             {
                 path: "settings",
