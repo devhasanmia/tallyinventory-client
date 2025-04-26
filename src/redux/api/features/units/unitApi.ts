@@ -4,14 +4,14 @@ const unitApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllUnits: builder.query({
       query: () => ({
-        url: "/unit/getAllUnits",
+        url: "/unit/getAllUnits?limit=500",
         method: "GET",
       }),
       providesTags: ["Unit"],
     }),
     createUnit: builder.mutation({
       query: (data) => ({
-        url: "/unit/createUnit",
+        url: "/unit/create-unit",
         method: "POST",
         body: data,
       }),

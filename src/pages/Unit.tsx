@@ -1,6 +1,8 @@
+import { useForm, SubmitHandler } from "react-hook-form"
 import { useState } from "react";
-import { Drawer} from "antd";
-import { useGetAllUnitsQuery } from "../redux/api/features/units/unitApi";
+import { Drawer, Spin} from "antd";
+import { useCreateUnitMutation, useGetAllUnitsQuery } from "../redux/api/features/units/unitApi";
+import { toast } from "sonner";
 
 const Unit = () => {
   const [open, setOpen] = useState(false);
@@ -12,7 +14,30 @@ const Unit = () => {
   const onClose = () => {
     setOpen(false);
   };
-  const {data} = useGetAllUnitsQuery("")
+  const {data: units, isLoading: unitsLoading, isFetching: unitsFetching} = useGetAllUnitsQuery("")
+  const [createUnit, {isLoading, isSuccess}] = useCreateUnitMutation()
+  type Inputs = {
+    name: string
+    abbreviation: string
+  }
+  
+    const {
+      register,
+      handleSubmit,
+      reset
+    } = useForm<Inputs>()
+
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+      try {
+        const res = await createUnit(data).unwrap();
+        toast.success(res.message)
+        onClose()
+        reset()
+      } catch (error: any) {
+        toast.error(<h1>{error.data.message} <br /> {error.data.errors[0].message}</h1>)
+      }
+    }
+  
 
   return (
     <div>
@@ -23,7 +48,6 @@ const Unit = () => {
         <div>
           <button
             onClick={showDrawer}
-            value="right"
             className="items-center px-4 py-2 text-xs font-semibold text-white bg-green-600 rounded-lg hover:bg-green-700 transition duration-200"
           >
             Create New Unit
@@ -31,6 +55,8 @@ const Unit = () => {
         </div>
       </div>
       <br />
+     
+
       <div className="w-full overflow-x-auto rounded-lg shadow-md">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
@@ -55,8 +81,9 @@ const Unit = () => {
               </th>
             </tr>
           </thead>
+          {unitsLoading && <Spin />}
           {
-            data?.data?.map((unit: any) => (
+            units?.data?.map((unit: any) => (
               <tbody className="bg-white divide-y divide-gray-100">
               <tr className="hover:bg-gray-50 transition duration-200">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -118,7 +145,7 @@ const Unit = () => {
       </div>
       <Drawer
         title={
-          <h1 className="text-center text-xl font-semibold bg-[#DDD] rounded-lg p-2">
+          <h1 className="text-center text-xl font-semibold  rounded-lg p-2">
             Create New Unit
           </h1>
         }
@@ -126,8 +153,8 @@ const Unit = () => {
         closable={false}
         onClose={onClose}
         open={open}
-        height={400}
       >
+          <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col items-center space-y-6">
           <div className="w-full px-4">
             <label className="block text-sm font-medium text-gray-800 mb-1">
@@ -136,7 +163,8 @@ const Unit = () => {
             <input
               type="text"
               placeholder="Enter unit name"
-              className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:ring-2 focus:ring-purple-500 focus:outline-none"
+              className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none"
+              {...register("name")}
             />
           </div>
           <div className="w-full px-4 ">
@@ -146,15 +174,17 @@ const Unit = () => {
             <input
               type="text"
               placeholder="Enter abbreviation"
-              className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:ring-2 focus:ring-green-500 focus:outline-none"
+              className="w-full border border-gray-300 rounded-lg py-2 px-3 focus:outline-none"
+              {...register("abbreviation")}
             />
             <div className="mt-5">
-            <button className="w-full py-2 m-t5 px-3 text-white bg-[#123458]  rounded-lg hover:cursor-pointer transition-all duration-300">
-              Submit
+            <button className="w-full py-2 m-t5 px-3 text-white bg-green-500  rounded-lg hover:cursor-pointer transition-all duration-300">
+              {isLoading ? "Loading..." : "Submit"}
             </button>
             </div>
           </div>
         </div>
+          </form>
       </Drawer>
     </div>
   );
