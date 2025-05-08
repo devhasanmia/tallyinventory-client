@@ -4,7 +4,7 @@ const unitApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllUnits: builder.query({
       query: () => ({
-        url: "/unit/getAllUnits?limit=500",
+        url: "/unit/getAllUnits?limit",
         method: "GET",
       }),
       providesTags: ["Unit"],
@@ -16,8 +16,15 @@ const unitApi = baseApi.injectEndpoints({
         body: data,
       }),
       invalidatesTags: ["Unit"],
-    })
+    }),
+    deleteUnit: builder.mutation({
+      query: (id) => ({
+        url: `/unit/deleteUnitById/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Unit"],
+    }),
   }),
 });
 
-export const { useGetAllUnitsQuery, useCreateUnitMutation } = unitApi;
+export const { useGetAllUnitsQuery, useCreateUnitMutation, useDeleteUnitMutation } = unitApi;

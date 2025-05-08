@@ -4,13 +4,11 @@ import { Outlet } from 'react-router';
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-  
   return (
     <div className="min-h-screen flex bg-gray-50 w-full">
       {/* Sidebar Start */}
       <Sidebar isOpen={isSidebarOpen} />
       {/* Sidebar End */}
-
       {/* Main Content Start */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header Start */}
@@ -36,6 +34,7 @@ const AdminDashboard = () => {
                 />
               </svg>
             </button>
+            
           </div>
         </header>
         {/* Header End */}
