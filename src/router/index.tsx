@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import NotFound from "../pages/NotFound";
 import Brand from "../pages/Brand";
 import Unit from "../pages/Unit";
+import AddCustomer from "../pages/customer/AddCustomer";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
             {
                 path: "dashboard",
                 element: <Dashboard />
+            },
+            {
+                path: "/add-customer",
+                element: <AddCustomer/>
             },
             {
                 path: "brand",

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Sidebar from './sidebar/Sidebar';
 import { Outlet } from 'react-router';
+import { getTodayDate } from '../../utils/date/getTodayDate';
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -34,7 +35,10 @@ const AdminDashboard = () => {
                 />
               </svg>
             </button>
-            
+            <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text ">
+              হাফসা স্মার্ট সলিউশন
+              <p className="text-xs text-gray-400">চন্দ্রপুর, তুলাধুনা বাজার, গুরুদাসপুর নাটোর।</p>
+            </h1>
           </div>
         </header>
         {/* Header End */}
