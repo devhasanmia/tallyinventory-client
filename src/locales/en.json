@@ -1,0 +1,39 @@
+{
+    "shopName": "HAFSA SMART SOLUTION",
+    "address": "CHANDRAPUR, TULADHANA BAZAR, GURUDASPUR, NATORE.",
+    "customer": {
+        "customerList": {
+            "title": "All Customers",
+            "addButton": "Add Customer",
+            "table": {
+                "photo": "Photo",
+                "name": "Name",
+                "mobile": "Mobile",
+                "email": "Email",
+                "balance": "Balance",
+                "due": "Due",
+                "address": "Address",
+                "actions": "Actions",
+                "edit": "Edit",
+                "delete": "Delete"
+            }
+        },
+        "addCustomer": {
+            "name": "Name",
+            "namePlaceholder": "Enter customer name",
+            "mobile": "Mobile",
+            "mobilePlaceholder": "Enter mobile number",
+            "email": "Email",
+            "emailPlaceholder": "Enter email address",
+            "address": "Address",
+            "addressPlaceholder": "Enter address",
+            "balance": "Balance",
+            "balancePlaceholder": "Enter balance",
+            "due": "Due",
+            "duePlaceholder": "Enter due amount",
+            "photo": "Photo",
+            "addCustomer": "Add Customer",
+            "photoPreviewAlt": "Preview"
+        }
+    }
+}

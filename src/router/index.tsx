@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import Brand from "../pages/Brand";
 import Unit from "../pages/Unit";
 import AddCustomer from "../pages/customer/AddCustomer";
+import CustomerList from "../pages/customer/CustomerList";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: "/add-customer",
                 element: <AddCustomer/>
+            },
+            {
+                path: "/customer-list",
+                element: <CustomerList/>
             },
             {
                 path: "brand",

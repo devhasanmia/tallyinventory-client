@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const AddCustomer = () => {
+  const { t } = useTranslation();
   const [photoPreview, setPhotoPreview] = useState(null);
-
   const handlePhotoChange = (e: any) => {
     const file = e.target.files[0];
     if (file) {
@@ -20,39 +21,39 @@ const AddCustomer = () => {
           {/* Name */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-600">
-              Name
+              {t('customer.addCustomer.name')}
             </label>
             <input
               type="text"
               id="name"
               className="mt-1 block w-full p-3 text-sm bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-500"
-              placeholder="Enter customer name"
+              placeholder={t('customer.addCustomer.namePlaceholder')}
             />
           </div>
 
           {/* Mobile */}
           <div>
             <label htmlFor="mobile" className="block text-sm font-medium text-gray-600">
-              Mobile
+              {t('customer.addCustomer.mobile')}
             </label>
             <input
               type="tel"
               id="mobile"
               className="mt-1 block w-full p-3 text-sm bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-500"
-              placeholder="Enter mobile number"
+              placeholder={t('customer.addCustomer.mobilePlaceholder')}
             />
           </div>
 
           {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-600">
-              Email
+              {t('customer.addCustomer.email')}
             </label>
             <input
               type="email"
               id="email"
               className="mt-1 block w-full p-3 text-sm bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 focus:border-blue-500"
-              placeholder="Enter email address"
+              placeholder={t('customer.addCustomer.emailPlaceholder')}
             />
           </div>
 
