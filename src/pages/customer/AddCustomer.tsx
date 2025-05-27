@@ -31,7 +31,7 @@ const AddCustomer = () => {
     setPhotoPreview(imageUrl);
   }
 
-  const [addCustomer] = useAddCustomerMutation()
+  const [addCustomer, {isLoading}] = useAddCustomerMutation()
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const formData = new FormData();
@@ -175,7 +175,7 @@ const AddCustomer = () => {
               type="submit"
               className="w-full bg-slate-900 hover:bg-slate-700 text-white py-3 rounded-xl font-semibold text-base"
             >
-               {t("customer.addCustomer.addCustomer")}
+             {isLoading ? t("customer.addCustomer.isLoading") : t("customer.addCustomer.addCustomer")}
             </button>
           </div>
         </form>

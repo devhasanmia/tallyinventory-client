@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { useGetAllCustomersQuery } from "../../redux/api/features/customers/customerApi";
 import { Link } from "react-router";
-const customerList = () => {
+import { useGetAllCategoryQuery } from "../../redux/api/features/categories/categoriesApi";
+
+const CategoryList = () => {
   const { t } = useTranslation();
-  const { data } = useGetAllCustomersQuery("");
+  const { data } = useGetAllCategoryQuery("");
   return (
     <div>
       <div>
@@ -12,12 +13,14 @@ const customerList = () => {
             <h1>{t("customer.customerList.title")}</h1>
           </div>
           <div>
-           <Link to={"/add-customer"}> <button
-              type="submit"
-              className=" bg-slate-900 hover:bg-slate-700 text-white py-2 px-4 rounded-xl font-semibold text-base shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none"
-            >
-              {t("customer.customerList.addButton")}
-            </button></Link>
+            <Link to={"/add-customer"}>
+              <button
+                type="submit"
+                className=" bg-slate-900 hover:bg-slate-700 text-white py-2 px-4 rounded-xl font-semibold text-base shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none"
+              >
+                {t("customer.customerList.addButton")}
+              </button>
+            </Link>
           </div>
         </div>
         <br />
@@ -30,73 +33,30 @@ const customerList = () => {
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.photo")}
+                  {t("categories.table.SerialNo")}
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.name")}
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {t("customer.customerList.table.mobile")}
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {t("customer.customerList.table.balance")}
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {t("customer.customerList.table.due")}
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {t("customer.customerList.table.address")}
+                  {t("categories.table.name")}
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.actions")}
+                  {t("categories.table.actions")}
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-100">
-              {data?.data?.map((item: any) => (
+              {data?.data?.map((item: any, index: number) => (
                 <tr className="hover:bg-gray-50 transition duration-200">
-                  <td className="p-2 m-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                    <img
-                      src={item.photo}
-                      alt=""
-                      width="100"
-                      height="100"
-                      className="w-[100px] h-[100px] object-cover rounded-full border-gray-400 border"
-                    />
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {index + 1}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {item.name}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {item.mobile}
-                  </td>
-
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {item.balance}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {item.due}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {item.address}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                     {/* Edit Button */}
@@ -150,4 +110,4 @@ const customerList = () => {
   );
 };
 
-export default customerList;
+export default CategoryList;

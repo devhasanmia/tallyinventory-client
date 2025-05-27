@@ -1,39 +1,55 @@
 {
-    "shopName": "হাফসা স্মার্ট সলিউশন",
-    "address": "চন্দ্রপুর, তুলাধুনা বাজার, গুরুদাসপুর নাটোর।",
-    "customer": {
-        "customerList": {
-            "title": "সকল কাস্টমার",
-            "addButton": "কাস্টমার যোগ করুন",
-            "table": {
-                "photo": "ছবি",
-                "name": "নাম",
-                "mobile": "মোবাইল",
-                "email": "ইমেইল",
-                "balance": "ব্যালেন্স",
-                "due": "বাকি",
-                "address": "ঠিকানা",
-                "actions": "অ্যাকশন",
-                "edit": "হালনাগাদ",
-                "delete": "মুছে ফেলুন"
-            }
-        },
-        "addCustomer": {
-            "name": "নাম",
-            "namePlaceholder": "গ্রাহকের নাম লিখুন",
-            "mobile": "মোবাইল",
-            "mobilePlaceholder": "মোবাইল নম্বর লিখুন",
-            "email": "ইমেইল",
-            "emailPlaceholder": "ইমেইল ঠিকানা লিখুন",
-            "address": "ঠিকানা",
-            "addressPlaceholder": "ঠিকানা লিখুন",
-            "balance": "ব্যালেন্স",
-            "balancePlaceholder": "ব্যালেন্স লিখুন",
-            "due": "বাকি",
-            "duePlaceholder": "বাকি পরিমাণ লিখুন",
-            "photo": "ছবি",
-            "addCustomer": "গ্রাহক যোগ করুন",
-            "photoPreviewAlt": "পূর্বরূপ"
-        }
+  "shopName": "হাফসা স্মার্ট সলিউশন",
+  "address": "চন্দ্রপুর, তুলাধুনা বাজার, গুরুদাসপুর নাটোর।",
+  "dashboard":{
+    "todayIncame":"আজকের ইনকাম",
+    "totalCustomer":"মোট কাস্টমার",
+    "totalDue":"মোট বকেয়া",
+    "totalSels":"মোট বিক্রয়"
+  },
+  "customer": {
+    "customerList": {
+      "title": "সকল কাস্টমার",
+      "addButton": "কাস্টমার যোগ করুন",
+      "table": {
+        "photo": "ছবি",
+        "name": "নাম",
+        "mobile": "মোবাইল",
+        "email": "ইমেইল",
+        "balance": "ব্যালেন্স",
+        "due": "বাকি",
+        "address": "ঠিকানা",
+        "actions": "অ্যাকশন",
+        "edit": "হালনাগাদ",
+        "delete": "মুছে ফেলুন"
+      }
+    },
+    "addCustomer": {
+      "name": "নাম",
+      "namePlaceholder": "গ্রাহকের নাম লিখুন",
+      "mobile": "মোবাইল",
+      "mobilePlaceholder": "মোবাইল নম্বর লিখুন",
+      "email": "ইমেইল",
+      "emailPlaceholder": "ইমেইল ঠিকানা লিখুন",
+      "address": "ঠিকানা",
+      "addressPlaceholder": "ঠিকানা লিখুন",
+      "balance": "ব্যালেন্স",
+      "balancePlaceholder": "ব্যালেন্স লিখুন",
+      "due": "বাকি",
+      "duePlaceholder": "বাকি পরিমাণ লিখুন",
+      "photo": "ছবি",
+      "addCustomer": "গ্রাহক যোগ করুন",
+      "photoPreviewAlt": "পূর্বরূপ",
+      "isLoading": "অপেক্ষা করুন"
     }
+  },
+  "categories": {
+    "table": {
+      "SerialNo": "ক্রমিক নং",
+      "name": "নাম",
+      "actions": "অ্যাকশন",
+      "edit": "হালনাগাদ",
+      "delete": "মুছে ফেলুন"
+    }
+  }
 }

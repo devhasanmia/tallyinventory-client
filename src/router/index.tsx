@@ -6,6 +6,7 @@ import Brand from "../pages/Brand";
 import Unit from "../pages/Unit";
 import AddCustomer from "../pages/customer/AddCustomer";
 import CustomerList from "../pages/customer/CustomerList";
+import CategoryList from "../pages/categories/CategoryList";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: "/customer-list",
                 element: <CustomerList/>
+            },
+            {
+                path: "/category-management",
+                element: <CategoryList/>
             },
             {
                 path: "brand",
