@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import { useGetAllCustomersQuery } from '../../redux/api/features/customers/customerApi';
 const customerList = () => {
   const { t } = useTranslation();
+  const {data} = useGetAllCustomersQuery("")
   return (
     <div>
       <div>
@@ -74,27 +76,28 @@ const customerList = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-100">
-              <tr className="hover:bg-gray-50 transition duration-200">
+             {
+              data?.data?.map((item:any) => ( <tr className="hover:bg-gray-50 transition duration-200">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  <img src="/profile.jpg" alt="" />
+                  <img src={item.photo} alt="" />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  MD. HASAN MIA
+                  {item.name}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  01740398196
+                  {item.mobile}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  hasanmiaweb@gmail.com
+                  {item.email}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  50 BDT
+                  {item.balance}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  100 BDT
+                  {item.due}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  CHANDRAPUR
+                  {item.address}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                   {/* Edit Button */}
@@ -140,7 +143,8 @@ const customerList = () => {
                     {t('customer.customerList.table.delete')}
                   </a>
                 </td>
-              </tr>
+              </tr>))
+             }
             </tbody>
           </table>
         </div>
