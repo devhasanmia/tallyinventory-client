@@ -13,7 +13,6 @@ const AddCustomer = () => {
   const { t } = useTranslation();
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [addCustomer, { isLoading }] = useAddCustomerMutation();
-
   const {
     register,
     handleSubmit,
@@ -100,6 +99,7 @@ const AddCustomer = () => {
             register={register}
             className="col-span-full"
             error={errors.address}
+            type="textarea"
           />
 
           <InputWithLabel

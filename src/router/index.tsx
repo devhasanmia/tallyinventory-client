@@ -7,6 +7,7 @@ import Unit from "../pages/Unit";
 import AddCustomer from "../pages/customer/AddCustomer";
 import CustomerList from "../pages/customer/CustomerList";
 import CategoryList from "../pages/categories/CategoryList";
+import ProductForm from "../pages/products/addProduct";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: "/category-management",
                 element: <CategoryList/>
+            },
+            {
+                path: "/add-product",
+                element: <ProductForm/>
             },
             {
                 path: "brand",
