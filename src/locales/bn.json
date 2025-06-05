@@ -1,11 +1,11 @@
 {
   "shopName": "হাফসা স্মার্ট সলিউশন",
   "address": "চন্দ্রপুর, তুলাধুনা বাজার, গুরুদাসপুর নাটোর।",
-  "dashboard":{
-    "todayIncame":"আজকের ইনকাম",
-    "totalCustomer":"মোট কাস্টমার",
-    "totalDue":"মোট বকেয়া",
-    "totalSels":"মোট বিক্রয়"
+  "dashboard": {
+    "todayIncame": "আজকের ইনকাম",
+    "totalCustomer": "মোট কাস্টমার",
+    "totalDue": "মোট বকেয়া",
+    "totalSels": "মোট বিক্রয়"
   },
   "customer": {
     "customerList": {
@@ -51,5 +51,43 @@
       "edit": "হালনাগাদ",
       "delete": "মুছে ফেলুন"
     }
+  },
+  "products": {
+    "productType": {
+      "label": "পণ্যের ধরন",
+      "option": "পণ্য টাইপ নির্বাচন করুন",
+      "physical": "জিনিসপত্র",
+      "digital": "ডিজিটাল পণ্য",
+      "services": "সেবা",
+      "experiential": "অভিজ্ঞতামূলক পণ্য",
+      "luxury": "বিলাসবহুল পণ্য",
+      "raw": "কাঁচামাল"
+    }
+  },
+  "sidebarMenu": {
+    "dashboard": "ড্যাশবোর্ড",
+    "sale": "বিক্রয়",
+    "productManagement": {
+      "label": "পণ্য ব্যবস্থাপনা",
+      "subItems": {
+        "addProduct": "পণ্য যোগ করুন",
+        "productList": "পণ্যের তালিকা",
+        "printLabels": "লেবেল প্রিন্ট করুন",
+        "trendingProduct": "জনপ্রিয় পণ্য"
+      }
+    },
+    "customerManagement": {
+      "label": "কাস্টমার ব্যবস্থাপনা",
+      "subItems": {
+        "addCustomer": "কাস্টমার যোগ করুন",
+        "customerList": "কাস্টমার তালিকা",
+        "customerDueReport": "কাস্টমারের বকেয়া রিপোর্ট"
+      }
+    },
+    "categories": "ক্যাটাগরি",
+    "brands": "ব্র্যান্ড",
+    "units": "ইউনিট",
+    "report": "রিপোর্ট",
+    "settings": "সেটিংস"
   }
 }

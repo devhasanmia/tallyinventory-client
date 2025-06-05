@@ -1,95 +1,13 @@
 import { useState } from "react";
 import { getTodayDate } from "../../../utils/date/getTodayDate";
-import {
-  HiOutlineClipboardDocumentList,
-  HiSquare3Stack3D,
-} from "react-icons/hi2";
-import { TbReportAnalytics } from "react-icons/tb";
-import { LuSettings, LuUserPlus } from "react-icons/lu";
-import {
-  MdManageAccounts,
-  MdMenuBook,
-  MdOutlineWorkspacePremium,
-} from "react-icons/md";
-import { IoBagAdd, IoPeopleSharp } from "react-icons/io5";
-import { ImQrcode } from "react-icons/im";
-import { AiFillDashboard, AiFillProduct } from "react-icons/ai";
 import { Link } from "react-router";
-
-const items = [
-  {
-    icon: <AiFillDashboard />,
-    label: "Dashboard",
-    link: "/dashboard",
-  },
-  {
-    icon: <AiFillDashboard />,
-    label: "Sale",
-    link: "/dashboard",
-  },
-  {
-    icon: <AiFillProduct />,
-    label: "Product Management",
-    subItems: [
-      { label: "Add Product", icon: <IoBagAdd />, link: "/add-product" },
-      {
-        label: "Product List",
-        icon: <HiSquare3Stack3D />,
-        link: "/product-list",
-      },
-      { label: "Print Labels", icon: <ImQrcode />, link: "/print-labels" },
-      {
-        label: "Trending Product",
-        icon: <MdOutlineWorkspacePremium />,
-        link: "/print-labels",
-      },
-    ],
-  },
-  {
-    icon: <MdManageAccounts />,
-    label: "Customer Management",
-    subItems: [
-      { label: "Add Customer", icon: <LuUserPlus />, link: "/add-customer" },
-      {
-        label: "Customer List",
-        icon: <IoPeopleSharp />,
-        link: "/customer-list",
-      },
-      {
-        label: "Customer Due Report",
-        icon: <MdMenuBook />,
-        link: "/customer-due",
-      },
-    ],
-  },
-  {
-    label: "Categories",
-    icon: <HiOutlineClipboardDocumentList />,
-    link: "/category-management",
-  },
-  {
-    label: "Brands",
-    icon: <HiSquare3Stack3D />,
-    link: "/brand",
-  },
-  {
-    label: "Units",
-    icon: <HiSquare3Stack3D />,
-    link: "/unit",
-  },
-  {
-    icon: <TbReportAnalytics />,
-    label: "Report",
-    link: "/report",
-  },
-  {
-    icon: <LuSettings />,
-    label: "Settings",
-    link: "/settings",
-  },
-];
+import { useTranslation } from "react-i18next";
+import { getMenuItems } from "./menuItems";
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
+   const { t } = useTranslation();
+   const items = getMenuItems(t);
+
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
   return (
     <aside
@@ -122,7 +40,6 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
         <nav className="mt-4 space-y-2">
           {items.map((item, index) => {
             const hasSubmenu = item.subItems && item.subItems.length > 0;
-
             return (
               <div key={index} className="space-y-1">
                 {hasSubmenu ? (

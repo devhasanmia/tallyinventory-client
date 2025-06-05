@@ -1,11 +1,11 @@
 {
   "shopName": "HAFSA SMART SOLUTION",
   "address": "CHANDRAPUR, TULADHANA BAZAR, GURUDASPUR, NATORE.",
-    "dashboard":{
-    "todayIncame":"Today Incame",
-    "totalCustomer":"Total Customer",
-    "totalDue":"Total Due",
-    "totalSels":"Total Sals"
+  "dashboard": {
+    "todayIncame": "Today Incame",
+    "totalCustomer": "Total Customer",
+    "totalDue": "Total Due",
+    "totalSels": "Total Sals"
   },
   "customer": {
     "customerList": {
@@ -51,5 +51,43 @@
       "edit": "Edit",
       "delete": "Delete"
     }
+  },
+  "products": {
+    "productType": {
+      "label": "Product Type",
+      "option": "Select product type",
+      "physical": "Physical Goods",
+      "digital": "Digital Products",
+      "services": "Services",
+      "experiential": "Experiential Products",
+      "luxury": "Luxury Products",
+      "raw": "Raw Materials"
+    }
+  },
+  "sidebarMenu": {
+    "dashboard": "Dashboard",
+    "sale": "Sale",
+    "productManagement": {
+      "label": "Product Management",
+      "subItems": {
+        "addProduct": "Add Product",
+        "productList": "Product List",
+        "printLabels": "Print Labels",
+        "trendingProduct": "Trending Product"
+      }
+    },
+    "customerManagement": {
+      "label": "Customer Management",
+      "subItems": {
+        "addCustomer": "Add Customer",
+        "customerList": "Customer List",
+        "customerDueReport": "Customer Due Report"
+      }
+    },
+    "categories": "Categories",
+    "brands": "Brands",
+    "units": "Units",
+    "report": "Report",
+    "settings": "Settings"
   }
 }
