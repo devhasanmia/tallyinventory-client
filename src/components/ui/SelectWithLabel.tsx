@@ -32,12 +32,12 @@ const SelectWithLabel: React.FC<SelectWithLabelProps> = ({
       </label>
       <select
         id={id}
-        {...(register ? register(name) : {})}
+        {...(register ? register(id) : {})}
         className={`mt-1 block w-full p-3 text-sm bg-green-50 focus-within:outline-1 focus-within:outline-green-200 border border-gray-300 rounded-lg ${className}`}
         required={required}
         disabled={disabled}
       >
-        <option value="">{defaultOption}</option>
+        <option>{defaultOption}</option>
         {options?.map((opt) => (
           <option key={opt.value} value={opt.value}>
             {opt.label}

@@ -4,12 +4,11 @@ import InputWithLabel from "../../components/ui/InputWithLabel";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { productSchema } from "../../validations/productSchema";
 import { z } from "zod";
-import { useGetAllCategoriesQuery } from "../../redux/api/features/products/productApi";
 import SelectWithLabel from "../../components/ui/SelectWithLabel";
 import { useGetAllUnitsQuery } from "../../redux/api/features/units/unitApi";
 import { useTranslation } from "react-i18next";
-import { AiFillCheckCircle, AiFillCreditCard, AiFillFileText, AiFillPlusCircle, AiFillTag } from "react-icons/ai";
-import { TbCarFanAuto } from "react-icons/tb";
+import { useGetAllCategoryQuery } from "../../redux/api/features/categories/categoriesApi";
+import { useAddProductMutation } from "../../redux/api/features/products/productApi";
 
 const ProductForm = () => {
   type ProductFormData = z.infer<typeof productSchema>;
@@ -22,8 +21,9 @@ const ProductForm = () => {
   } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema),
   });
-  const { data: category } = useGetAllCategoriesQuery("");
+  const { data: category } = useGetAllCategoryQuery("");
   const { data: unit } = useGetAllUnitsQuery("");
+  const [addProduct] = useAddProductMutation();
 
   const [totalPrice, setTotalPrice] = useState(0);
   const [discountedPrice, setDiscountedPrice] = useState(0);
@@ -40,18 +40,17 @@ const ProductForm = () => {
     const tPrice = quantity * purchasePrice;
     const dPrice = tPrice - discount;
     const dueAmount = dPrice - cashPayment;
-
     setTotalPrice(tPrice);
     setDiscountedPrice(dPrice);
     setDue(dueAmount);
   }, [quantity, purchasePrice, discount, cashPayment]);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     data.totalPrice = totalPrice;
     data.discountedPrice = discountedPrice;
     data.due = due;
-    console.log("Submitted data:", data);
-    // You can send this to backend API
+    // console.log("Submitted data:", data);
+   await addProduct(data)
   };
 
   return (
@@ -67,22 +66,21 @@ const ProductForm = () => {
             id="productType"
             name="productType"
             options={[
-              { value: "physical", label: t("products.productType.physical") },
-              { value: "digital", label: t("products.productType.digital") },
-              { value: "services", label: t("products.productType.services") },
+              { value: "Physical Goods", label: t("products.productType.physical") },
+              { value: "Digital Products", label: t("products.productType.digital") },
+              { value: "Services", label: t("products.productType.services") },
               {
-                value: "experiential",
+                value: "Experiential Products",
                 label: t("products.productType.experiential"),
               },
-              { value: "luxury", label: t("products.productType.luxury") },
-              { value: "raw", label: t("products.productType.raw") },
+              { value: "Luxury Products", label: t("products.productType.luxury") },
+              { value: "Raw Materials", label: t("products.productType.raw") },
             ]}
-            defaultOption= {t("products.productType.option")}
+            defaultOption={t("products.productType.option")}
             register={register}
             required
             error={errors?.productType}
           />
-
           <InputWithLabel
             label="Name"
             id="name"
@@ -103,30 +101,30 @@ const ProductForm = () => {
             error={errors.brand}
             type="text"
           />
-
           <SelectWithLabel
-            label="Category"
+            label={t("products.category.label")}
             id="category"
             name="category"
             options={category?.data?.map((item: any) => ({
-              value: item?.id,
+              value: item?._id,
               label: item?.name,
             }))}
             register={register}
             required
+            defaultOption={t("products.category.option")}
             error={errors?.category}
           />
-
           <SelectWithLabel
-            label="Unit"
+            label={t("products.units.label")}
             id="unit"
             name="unit"
             options={unit?.data?.map((item: any) => ({
-              value: item?.id,
+              value: item?._id,
               label: item?.name,
             }))}
             register={register}
             required
+            defaultOption={t("products.units.option")}
             error={errors?.unit}
           />
           <InputWithLabel
@@ -179,20 +177,17 @@ const ProductForm = () => {
             error={errors.dealer}
             type="text"
           />
-
-          {/* Product Type */}
         </form>
       </div>
- {/* <div className="flex flex-col lg:flex-row gap-6 px-4 py-8"> */}
       {/* RIGHT CART */}
-               <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-xl border border-gray-200 p-6 space-y-6">
+      <div className="w-full lg:w-1/3 bg-white rounded-2xl shadow-xl border border-gray-200 p-6 space-y-6">
         {/* Header */}
         <div className="border-b pb-4">
           <h2 className="text-2xl font-semibold text-gray-800">Cart Summary</h2>
-          <p className="text-sm text-gray-500 mt-1">Review and finalize product sale</p>
+          <p className="text-sm text-gray-500 mt-1">
+            Review and finalize product sale
+          </p>
         </div>
-
-        {/* Input Fields */}
         <div className="space-y-4">
           <InputWithLabel
             label="Discount"
@@ -204,22 +199,24 @@ const ProductForm = () => {
             error={errors.discount}
             type="number"
           />
-
           <SelectWithLabel
-            label="Product Type"
-            id="productType"
-            name="productType"
+            label={t("products.paymentMethod.label")}
+            id="paymentMethod"
+            name="paymentMethod"
+            defaultOption={t("products.paymentMethod.option")}
             options={[
-              { value: "Bkash", label: "বিকাশ" },
-              { value: "digital", label: "ডিজিটাল পণ্য" },
-              { value: "services", label: "সেবা" },
-              { value: "experiential", label: "অভিজ্ঞতামূলক পণ্য" },
-              { value: "luxury", label: "বিলাসবহুল পণ্য" },
-              { value: "raw", label: "কাঁচামাল" },
+              { value: "Cash", label: t("products.paymentMethod.cash") },
+              { value: "bKash", label: t("products.paymentMethod.bkash") },
+              { value: "Nagad", label: t("products.paymentMethod.nagad") },
+              { value: "Upay", label: t("products.paymentMethod.upay") },
+              {
+                value: "Bank Payment",
+                label: t("products.paymentMethod.bankPayment"),
+              },
             ]}
             register={register}
             required
-            error={errors?.productType}
+            error={errors?.paymentMethod}
           />
 
           <InputWithLabel
@@ -260,11 +257,15 @@ const ProductForm = () => {
         <div className="bg-gray-50 p-4 rounded-xl mt-4 text-sm text-gray-700 space-y-2 border-t pt-4">
           <div className="flex justify-between">
             <span>Total Price:</span>
-            <span className="font-medium text-gray-800">{totalPrice.toFixed(2)} ৳</span>
+            <span className="font-medium text-gray-800">
+              {totalPrice.toFixed(2)} ৳
+            </span>
           </div>
           <div className="flex justify-between">
             <span>Discounted Price:</span>
-            <span className="font-medium text-green-600">{discountedPrice.toFixed(2)} ৳</span>
+            <span className="font-medium text-green-600">
+              {discountedPrice.toFixed(2)} ৳
+            </span>
           </div>
           <div className="flex justify-between">
             <span>Due:</span>

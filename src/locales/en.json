@@ -62,6 +62,23 @@
       "experiential": "Experiential Products",
       "luxury": "Luxury Products",
       "raw": "Raw Materials"
+    },
+    "category": {
+      "label": "Category",
+      "option": "Select Category"
+    },
+    "units": {
+      "label": "Unit",
+      "option": "Select Unit"
+    },
+    "paymentMethod": {
+      "label": "Payment Method",
+      "option": "Select a payment method",
+      "cash": "Cash",
+      "bkash": "bKash",
+      "nagad": "Nagad",
+      "upay": "Upay",
+      "bankPayment": "Bank Payment"
     }
   },
   "sidebarMenu": {

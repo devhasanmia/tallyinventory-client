@@ -1,0 +1,93 @@
+{
+  "shopName": "حلول حفصة الذكية",
+  "address": "تشاندربور، سوق تولادهانا، جورداسبور، ناتور.",
+  "dashboard": {
+    "todayIncame": "دخل اليوم",
+    "totalCustomer": "إجمالي العملاء",
+    "totalDue": "إجمالي المديونية",
+    "totalSels": "إجمالي المبيعات"
+  },
+  "customer": {
+    "customerList": {
+      "title": "جميع العملاء",
+      "addButton": "إضافة عميل",
+      "table": {
+        "photo": "الصورة",
+        "name": "الاسم",
+        "mobile": "رقم الجوال",
+        "email": "البريد الإلكتروني",
+        "balance": "الرصيد",
+        "due": "المديونية",
+        "address": "العنوان",
+        "actions": "الإجراءات",
+        "edit": "تعديل",
+        "delete": "حذف"
+      }
+    },
+    "addCustomer": {
+      "name": "الاسم",
+      "namePlaceholder": "أدخل اسم العميل",
+      "mobile": "رقم الجوال",
+      "mobilePlaceholder": "أدخل رقم الجوال",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "أدخل البريد الإلكتروني",
+      "address": "العنوان",
+      "addressPlaceholder": "أدخل العنوان",
+      "balance": "الرصيد",
+      "balancePlaceholder": "أدخل الرصيد",
+      "due": "المديونية",
+      "duePlaceholder": "أدخل المديونية",
+      "photo": "الصورة",
+      "addCustomer": "إضافة عميل",
+      "photoPreviewAlt": "معاينة",
+      "isLoading": "جارٍ التحميل"
+    }
+  },
+  "categories": {
+    "table": {
+      "SerialNo": "الرقم التسلسلي",
+      "name": "الاسم",
+      "actions": "الإجراءات",
+      "edit": "تعديل",
+      "delete": "حذف"
+    }
+  },
+  "products": {
+    "productType": {
+      "label": "نوع المنتج",
+      "option": "اختر نوع المنتج",
+      "physical": "منتجات مادية",
+      "digital": "منتجات رقمية",
+      "services": "خدمات",
+      "experiential": "منتجات تجريبية",
+      "luxury": "منتجات فاخرة",
+      "raw": "مواد خام"
+    }
+  },
+  "sidebarMenu": {
+    "dashboard": "لوحة التحكم",
+    "sale": "المبيعات",
+    "productManagement": {
+      "label": "إدارة المنتجات",
+      "subItems": {
+        "addProduct": "إضافة منتج",
+        "productList": "قائمة المنتجات",
+        "printLabels": "طباعة الملصقات",
+        "trendingProduct": "المنتجات الرائجة"
+      }
+    },
+    "customerManagement": {
+      "label": "إدارة العملاء",
+      "subItems": {
+        "addCustomer": "إضافة عميل",
+        "customerList": "قائمة العملاء",
+        "customerDueReport": "تقرير مديونية العملاء"
+      }
+    },
+    "categories": "الفئات",
+    "brands": "العلامات التجارية",
+    "units": "الوحدات",
+    "report": "التقارير",
+    "settings": "الإعدادات"
+  }
+}

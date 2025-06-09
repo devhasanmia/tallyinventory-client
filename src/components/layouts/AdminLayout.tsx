@@ -51,19 +51,17 @@ const AdminDashboard = () => {
             </div>
 
             {/* Language Switcher */}
-            <div className="flex items-center space-x-2  px-3 py-1">
-              <button
-                onClick={() => switchLanguage("en")}
+            <div className="flex items-center space-x-2 px-3 py-1">
+              <select
+                value={i18n.language}
+                onChange={(e) => switchLanguage(e.target.value)}
                 className="text-sm font-medium text-gray-700 bg-white border border-gray-300 px-4 py-1.5 rounded-full hover:bg-blue-100 transition-all duration-200"
               >
-                English
-              </button>
-              <button
-                onClick={() => switchLanguage("bn")}
-                className="text-sm font-medium text-gray-700 bg-white border border-gray-300 px-4 py-1.5 rounded-full hover:bg-green-100 transition-all duration-200"
-              >
-                বাংলা
-              </button>
+                <option value="en">English</option>
+                <option value="bn">বাংলা</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ar">Arabic</option>
+              </select>
             </div>
           </div>
         </header>

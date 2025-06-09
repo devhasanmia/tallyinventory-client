@@ -1,0 +1,93 @@
+{
+  "shopName": "हाफ़सा स्मार्ट सॉल्यूशन",
+  "address": "चंद्रपुर, तुलाधना बाज़ार, गुरुदासपुर, नाटोर।",
+  "dashboard": {
+    "todayIncame": "आज की आय",
+    "totalCustomer": "कुल ग्राहक",
+    "totalDue": "कुल बकाया",
+    "totalSels": "कुल बिक्री"
+  },
+  "customer": {
+    "customerList": {
+      "title": "सभी ग्राहक",
+      "addButton": "ग्राहक जोड़ें",
+      "table": {
+        "photo": "फोटो",
+        "name": "नाम",
+        "mobile": "मोबाइल",
+        "email": "ईमेल",
+        "balance": "शेष राशि",
+        "due": "बकाया",
+        "address": "पता",
+        "actions": "क्रियाएं",
+        "edit": "संपादित करें",
+        "delete": "हटाएं"
+      }
+    },
+    "addCustomer": {
+      "name": "नाम",
+      "namePlaceholder": "ग्राहक का नाम दर्ज करें",
+      "mobile": "मोबाइल",
+      "mobilePlaceholder": "मोबाइल नंबर दर्ज करें",
+      "email": "ईमेल",
+      "emailPlaceholder": "ईमेल पता दर्ज करें",
+      "address": "पता",
+      "addressPlaceholder": "पता दर्ज करें",
+      "balance": "शेष राशि",
+      "balancePlaceholder": "शेष राशि दर्ज करें",
+      "due": "बकाया",
+      "duePlaceholder": "बकाया राशि दर्ज करें",
+      "photo": "फोटो",
+      "addCustomer": "ग्राहक जोड़ें",
+      "photoPreviewAlt": "पूर्वावलोकन",
+      "isLoading": "लोड हो रहा है"
+    }
+  },
+  "categories": {
+    "table": {
+      "SerialNo": "क्रम संख्या",
+      "name": "नाम",
+      "actions": "क्रियाएं",
+      "edit": "संपादित करें",
+      "delete": "हटाएं"
+    }
+  },
+  "products": {
+    "productType": {
+      "label": "उत्पाद प्रकार",
+      "option": "उत्पाद प्रकार चुनें",
+      "physical": "भौतिक वस्तुएं",
+      "digital": "डिजिटल उत्पाद",
+      "services": "सेवाएं",
+      "experiential": "अनुभवात्मक उत्पाद",
+      "luxury": "लक्जरी उत्पाद",
+      "raw": "कच्चा माल"
+    }
+  },
+  "sidebarMenu": {
+    "dashboard": "डैशबोर्ड",
+    "sale": "बिक्री",
+    "productManagement": {
+      "label": "उत्पाद प्रबंधन",
+      "subItems": {
+        "addProduct": "उत्पाद जोड़ें",
+        "productList": "उत्पाद सूची",
+        "printLabels": "लेबल प्रिंट करें",
+        "trendingProduct": "प्रचलित उत्पाद"
+      }
+    },
+    "customerManagement": {
+      "label": "ग्राहक प्रबंधन",
+      "subItems": {
+        "addCustomer": "ग्राहक जोड़ें",
+        "customerList": "ग्राहक सूची",
+        "customerDueReport": "ग्राहक बकाया रिपोर्ट"
+      }
+    },
+    "categories": "श्रेणियाँ",
+    "brands": "ब्रांड्स",
+    "units": "इकाइयाँ",
+    "report": "रिपोर्ट",
+    "settings": "सेटिंग्स"
+  }
+}
