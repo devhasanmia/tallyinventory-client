@@ -5,10 +5,10 @@ import { z } from "zod";
 import { useLoginMutation } from "../../redux/api/features/auth/authApi";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { otpAuth } from "../../redux/api/features/auth/authSlice";
+import { useEffect } from "react";
 import { tokenVerify } from "../../redux/api/features/units/tokenVerify";
-import { useAppDispatch } from "../../redux/hooks";
-import { otpAuth, setUser } from "../../redux/api/features/auth/authSlice";
-import { jwtDecode } from "jwt-decode";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -26,6 +26,15 @@ const Login = () => {
   const navigate = useNavigate();
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
+  const token = useAppSelector((state) => state.auth.token);
+  useEffect(() => {
+    if (token) {
+      const userDecoded = tokenVerify(token);
+      if (userDecoded?.designation === "Business Owner" || "Sales Executive") {
+        navigate("/dashboard");
+      }
+    }
+  }, [token, navigate]);
 
   const onSubmit = async (data: Inputs) => {
     try {

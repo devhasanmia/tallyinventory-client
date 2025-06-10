@@ -5,6 +5,8 @@ import AdminDashboard from "../components/layouts/AdminLayout";
 import Login from "../pages/auth/Login";
 import Registration from "../pages/auth/Registration";
 import OtpVerify from "../pages/auth/OtpVerify";
+import ProtectedRoute from "../components/layouts/ProtectedRoute";
+import OtpProtectedRoute from "../components/layouts/OtpVerificationProtector";
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 const Brand = lazy(() => import("../pages/Brand"));
@@ -18,9 +20,11 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: (
-            <Suspense fallback={<Loading />}>
-                <AdminDashboard />
-            </Suspense>
+            <ProtectedRoute>
+                <Suspense fallback={<Loading />}>
+                    <AdminDashboard />
+                </Suspense>
+            </ProtectedRoute>
         ),
         children: [
             {
@@ -104,25 +108,27 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: (
-            <Suspense fallback={<Loading/>}>
-                <Login/>
+            <Suspense fallback={<Loading />}>
+                <Login />
             </Suspense>
         )
     },
     {
         path: "/registration",
         element: (
-            <Suspense fallback={<Loading/>}>
-                <Registration/>
+            <Suspense fallback={<Loading />}>
+                <Registration />
             </Suspense>
         )
     },
     {
         path: "/otp-verify",
         element: (
-            <Suspense fallback={<Loading/>}>
-                <OtpVerify/>
-            </Suspense>
+            <OtpProtectedRoute>
+                <Suspense fallback={<Loading />}>
+                    <OtpVerify />
+                </Suspense>
+            </OtpProtectedRoute>
         )
     }
 ]);

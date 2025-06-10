@@ -1,15 +1,23 @@
 import { useState } from "react";
 import { getTodayDate } from "../../../utils/date/getTodayDate";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getMenuItems } from "./menuItems";
 import { useGetUserQuery } from "../../../redux/api/features/auth/authApi";
+import { useAppDispatch } from "../../../redux/hooks";
+import { logout } from "../../../redux/api/features/auth/authSlice";
 
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
   const { t } = useTranslation();
   const items = getMenuItems(t);
   const { data: userData } = useGetUserQuery("")
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
+  const dispatch = useAppDispatch();
+  const nagivate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout())
+    nagivate("/login")
+  }
   return (
     <aside
       id="sidebar"
@@ -27,10 +35,10 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
             />
             <span
               className={`absolute bottom-1 right-1 w-3 h-3 border-2 border-slate-900 rounded-full animate-pulse ${userData?.data?.verification === "verified"
-                  ? "bg-green-500"
-                  : userData?.data?.verification === "unverified"
-                    ? "bg-red-500"
-                    : "bg-yellow-400"
+                ? "bg-green-500"
+                : userData?.data?.verification === "unverified"
+                  ? "bg-red-500"
+                  : "bg-yellow-400"
                 }`}
             ></span>
 
@@ -119,9 +127,9 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 
       {/* Bottom: Logout */}
       <div className="p-4 border-t border-gray-700 flex justify-center">
-        <a
-          href="#"
-          className="flex items-center justify-center p-1 w-full rounded-lg bg-gray-800 hover:bg-red-600/30 transition-all duration-200 group"
+        <button
+          onClick={handleLogout}
+          className="cursor-pointer flex items-center justify-center p-1 w-full rounded-lg bg-gray-800 hover:bg-red-600/30 transition-all duration-200 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +148,7 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
           <span className="text-lg font-semibold text-red-400 group-hover:text-red-500 p-2">
             Logout
           </span>
-        </a>
+        </button>
       </div>
     </aside>
   );

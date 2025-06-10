@@ -6,7 +6,7 @@ import "../../i18n";
 import { useGetUserQuery } from "../../redux/api/features/auth/authApi";
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const switchLanguage = (lng: any) => {
     i18n.changeLanguage(lng);
