@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/api/features/auth/authSlice";
 import { toast } from "sonner";
+import { tokenVerify } from "../../redux/api/features/units/tokenVerify";
 
 const otpSchema = z.object({
   otp: z
@@ -24,18 +25,19 @@ const OtpVerify = () => {
     resolver: zodResolver(otpSchema),
   });
   const dispatch = useAppDispatch()
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [verifyOtp, { isLoading }] = useVerifyOtpMutation();
   const onSubmit = async (data: OtpInputs) => {
-      try {
+    try {
       const result = await verifyOtp(data).unwrap();
-      console.log(result)
+      const decoded = tokenVerify(result?.data?.token);
       dispatch(
         setUser({
-          user: result.data.otpAccessToken,
+          user: decoded,
+          token: result?.data?.token
         })
       );
-      navigate("/otp-verify");
+      navigate("/dashboard");
       toast.success(result.message);
     } catch (error: any) {
       toast.error(error?.data?.message || "Login failed");
@@ -53,11 +55,10 @@ const OtpVerify = () => {
               {...register("otp")}
               maxLength={6}
               placeholder="Enter the 6-digit OTP"
-              className={`w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 ${
-                errors.otp
-                  ? "border-red-500 focus:ring-red-500"
-                  : "border-gray-300 focus:ring-blue-500"
-              }`}
+              className={`w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 ${errors.otp
+                ? "border-red-500 focus:ring-red-500"
+                : "border-gray-300 focus:ring-blue-500"
+                }`}
             />
             {errors.otp && (
               <p className="text-red-600 text-sm mt-1">

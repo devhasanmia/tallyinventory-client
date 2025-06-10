@@ -3,6 +3,7 @@ import Sidebar from "./sidebar/Sidebar";
 import { Outlet } from "react-router";
 import { useTranslation } from "react-i18next";
 import "../../i18n";
+import { useGetUserQuery } from "../../redux/api/features/auth/authApi";
 const AdminDashboard = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const { t, i18n } = useTranslation();
@@ -10,7 +11,7 @@ const AdminDashboard = () => {
   const switchLanguage = (lng: any) => {
     i18n.changeLanguage(lng);
   };
-
+  const { data: userData } = useGetUserQuery("")
   return (
     <div className="min-h-screen flex bg-gray-50 w-full">
       {/* Sidebar Start */}
@@ -45,9 +46,9 @@ const AdminDashboard = () => {
             {/* Shop Info */}
             <div className="text-center flex-1">
               <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-                {t("shopName")}
+                {userData?.data?.organizationName}
               </h1>
-              <p className="text-xs text-gray-400">{t("address")}</p>
+              <p className="text-xs text-gray-400">{userData?.data?.address}</p>
             </div>
 
             {/* Language Switcher */}
