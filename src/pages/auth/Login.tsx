@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router";
 import { tokenVerify } from "../../redux/api/features/units/tokenVerify";
 import { useAppDispatch } from "../../redux/hooks";
-import { setUser } from "../../redux/api/features/auth/authSlice";
+import { otpAuth, setUser } from "../../redux/api/features/auth/authSlice";
 import { jwtDecode } from "jwt-decode";
 
 const loginSchema = z.object({
@@ -30,13 +30,9 @@ const Login = () => {
   const onSubmit = async (data: Inputs) => {
     try {
       const result = await login(data).unwrap();
-      const decoded = tokenVerify(result.data.accessToken);
-      console.log("DECODED DATA",decoded)
-      console.log("Result",result)
       dispatch(
-        setUser({
-          user: decoded,
-          token: result.data.accessToken,
+        otpAuth({
+          otpAuthToken: result.data.otpAccessToken,
         })
       );
       navigate("/otp-verify");

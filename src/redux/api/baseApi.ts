@@ -10,6 +10,10 @@ export const baseApi = createApi({
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
+      const otpToken = (getState() as RootState)?.auth.otpToken;
+      if (otpToken) {
+        headers.set("authorization", `Bearer ${otpToken}`);
+      }
     }
   }),
   tagTypes: ["transactions", "user"],
