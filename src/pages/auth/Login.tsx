@@ -5,6 +5,10 @@ import { z } from "zod";
 import { useLoginMutation } from "../../redux/api/features/auth/authApi";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
+import { tokenVerify } from "../../redux/api/features/units/tokenVerify";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser } from "../../redux/api/features/auth/authSlice";
+import { jwtDecode } from "jwt-decode";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -21,16 +25,27 @@ const Login = () => {
   });
   const navigate = useNavigate();
   const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
 
   const onSubmit = async (data: Inputs) => {
     try {
-      const loginData = await login(data).unwrap();
-      toast.success(loginData?.message);
+      const result = await login(data).unwrap();
+      const decoded = tokenVerify(result.data.accessToken);
+      console.log("DECODED DATA",decoded)
+      console.log("Result",result)
+      dispatch(
+        setUser({
+          user: decoded,
+          token: result.data.accessToken,
+        })
+      );
       navigate("/otp-verify");
+      toast.success(result.message);
     } catch (error: any) {
       toast.error(error?.data?.message || "Login failed");
     }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">

@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
 import { useVerifyOtpMutation } from "../../redux/api/features/auth/authApi";
 
 const otpSchema = z.object({
@@ -28,7 +27,6 @@ const OtpVerify = () => {
             console.log(error)
         }
     };
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="w-full max-w-sm bg-white rounded-2xl shadow-lg p-8">
