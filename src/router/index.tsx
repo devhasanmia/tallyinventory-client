@@ -1,61 +1,130 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
+import Loading from "../pages/Loading";
 import AdminDashboard from "../components/layouts/AdminLayout";
-import Dashboard from "../pages/Dashboard";
-import NotFound from "../pages/NotFound";
-import Brand from "../pages/Brand";
-import Unit from "../pages/Unit";
-import AddCustomer from "../pages/customer/AddCustomer";
-import CustomerList from "../pages/customer/CustomerList";
-import CategoryList from "../pages/categories/CategoryList";
-import ProductForm from "../pages/products/addProduct";
+import Login from "../pages/auth/Login";
+import Registration from "../pages/auth/Registration";
+import OtpVerify from "../pages/auth/OtpVerify";
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const NotFound = lazy(() => import("../pages/NotFound"));
+const Brand = lazy(() => import("../pages/Brand"));
+const Unit = lazy(() => import("../pages/Unit"));
+const AddCustomer = lazy(() => import("../pages/customer/AddCustomer"));
+const CustomerList = lazy(() => import("../pages/customer/CustomerList"));
+const CategoryList = lazy(() => import("../pages/categories/CategoryList"));
+const ProductForm = lazy(() => import("../pages/products/addProduct"));
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <AdminDashboard />,
+        element: (
+            <Suspense fallback={<Loading />}>
+                <AdminDashboard />
+            </Suspense>
+        ),
         children: [
             {
                 path: "dashboard",
-                element: <Dashboard />
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Dashboard />
+                    </Suspense>
+                ),
             },
             {
                 path: "",
-                element: <Dashboard />
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Dashboard />
+                    </Suspense>
+                ),
             },
             {
                 path: "/add-customer",
-                element: <AddCustomer/>
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <AddCustomer />
+                    </Suspense>
+                ),
             },
             {
                 path: "/customer-list",
-                element: <CustomerList/>
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <CustomerList />
+                    </Suspense>
+                ),
             },
             {
                 path: "/category-management",
-                element: <CategoryList/>
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <CategoryList />
+                    </Suspense>
+                ),
             },
             {
                 path: "/add-product",
-                element: <ProductForm/>
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <ProductForm />
+                    </Suspense>
+                ),
             },
             {
                 path: "brand",
-                element: <Brand />
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Brand />
+                    </Suspense>
+                ),
             },
             {
                 path: "unit",
-                element: <Unit />
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <Unit />
+                    </Suspense>
+                ),
             },
             {
                 path: "settings",
-                element: <h1>Settings</h1>
+                element: <h1>Settings</h1>,
             },
             {
                 path: "*",
-                element: <NotFound />
-            }
-        ]
+                element: (
+                    <Suspense fallback={<Loading />}>
+                        <NotFound />
+                    </Suspense>
+                ),
+            },
+        ],
     },
+    {
+        path: "/login",
+        element: (
+            <Suspense fallback={<Loading/>}>
+                <Login/>
+            </Suspense>
+        )
+    },
+    {
+        path: "/registration",
+        element: (
+            <Suspense fallback={<Loading/>}>
+                <Registration/>
+            </Suspense>
+        )
+    },
+    {
+        path: "/otp-verify",
+        element: (
+            <Suspense fallback={<Loading/>}>
+                <OtpVerify/>
+            </Suspense>
+        )
+    }
 ]);
 
-export default router
+export default router;
