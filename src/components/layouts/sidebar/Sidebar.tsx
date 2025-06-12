@@ -10,38 +10,39 @@ import { logout } from "../../../redux/api/features/auth/authSlice";
 const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
   const { t } = useTranslation();
   const items = getMenuItems(t);
-  const { data: userData } = useGetUserQuery("")
+  const { data: userData } = useGetUserQuery("");
   const [openSubmenuIndex, setOpenSubmenuIndex] = useState<number | null>(null);
   const dispatch = useAppDispatch();
   const nagivate = useNavigate();
   const handleLogout = () => {
-    dispatch(logout())
-    nagivate("/login")
-  }
+    dispatch(logout());
+    nagivate("/login");
+  };
   return (
     <aside
       id="sidebar"
-      className={`bg-slate-900 text-white ${isOpen ? "w-64" : "w-0"
-        } flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-xl`}
+      className={`bg-slate-900 text-white ${
+        isOpen ? "w-64" : "w-0"
+      } flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-xl`}
     >
       {/* Top: Profile */}
       <div>
         <div className="p-6 border-b border-gray-700 flex items-center space-x-4">
           <div className="relative">
             <img
-              src={userData?.data?.photo}
-              alt="Admin"
+              src={`${userData?.data?.photo}`}
+              alt="Profile"
               className="w-16 h-16 rounded-full border-2 border-blue-600 object-cover shadow-lg"
             />
             <span
-              className={`absolute bottom-1 right-1 w-3 h-3 border-2 border-slate-900 rounded-full animate-pulse ${userData?.data?.verification === "verified"
-                ? "bg-green-500"
-                : userData?.data?.verification === "unverified"
+              className={`absolute bottom-1 right-1 w-3 h-3 border-2 border-slate-900 rounded-full animate-pulse ${
+                userData?.data?.verification === "verified"
+                  ? "bg-green-500"
+                  : userData?.data?.verification === "unverified"
                   ? "bg-red-500"
                   : "bg-yellow-400"
-                }`}
+              }`}
             ></span>
-
           </div>
           <div>
             <h1 className="font-bold text-blue-300">{userData?.data?.name}</h1>
@@ -51,7 +52,6 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
             <p className="text-xs text-gray-400">{getTodayDate()}</p>
           </div>
         </div>
-
 
         {/* Menu Items */}
         <nav className="mt-4 space-y-2">
@@ -76,8 +76,9 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                         {item.label}
                       </span>
                       <svg
-                        className={`w-4 h-4 transition-transform ${openSubmenuIndex === index ? "rotate-180" : ""
-                          }`}
+                        className={`w-4 h-4 transition-transform ${
+                          openSubmenuIndex === index ? "rotate-180" : ""
+                        }`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -91,8 +92,9 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                       </svg>
                     </button>
                     <div
-                      className={`space-y-1 overflow-hidden transition-all duration-300 ease-in-out ${openSubmenuIndex === index ? "max-h-96" : "max-h-0"
-                        }`}
+                      className={`space-y-1 overflow-hidden transition-all duration-300 ease-in-out ${
+                        openSubmenuIndex === index ? "max-h-96" : "max-h-0"
+                      }`}
                     >
                       {item.subItems.map((sub, subIndex) => (
                         <Link

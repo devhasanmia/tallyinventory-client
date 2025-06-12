@@ -2,13 +2,13 @@ import { baseApi } from "../../baseApi";
 
 const categoriesApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // addCategory: builder.mutation({
-    //   query: (data) => ({
-    //     url: "/category/create-customer",
-    //     method: "POST",
-    //     body: data,
-    //   }),
-    // }),
+    addCategory: builder.mutation({
+      query: (data) => ({
+        url: "/category/create-category",
+        method: "POST",
+        body: data,
+      }),
+    }),
      getAllCategory: builder.query({
       query: () => ({
         url: "/category/getAllCategories",
@@ -19,4 +19,4 @@ const categoriesApi = baseApi.injectEndpoints({
   }),
 });
 
-export const {useGetAllCategoryQuery} = categoriesApi;
+export const {useAddCategoryMutation, useGetAllCategoryQuery} = categoriesApi;

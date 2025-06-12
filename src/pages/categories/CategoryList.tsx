@@ -13,7 +13,7 @@ const CategoryList = () => {
             <h1>{t("customer.customerList.title")}</h1>
           </div>
           <div>
-            <Link to={"/add-customer"}>
+            <Link to={"/add-category"}>
               <button
                 type="submit"
                 className=" bg-slate-900 hover:bg-slate-700 text-white py-2 px-4 rounded-xl font-semibold text-base shadow-md hover:shadow-lg transition-all duration-300 ease-in-out focus:outline-none"
