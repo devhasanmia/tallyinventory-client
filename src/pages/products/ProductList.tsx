@@ -1,13 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { useGetAllCustomersQuery } from "../../redux/api/features/customers/customerApi";
 import { Link } from "react-router";
-import Loading from "../Loading";
-const customerList = () => {
+import { useGetAllProductsQuery } from "../../redux/api/features/products/productApi";
+const ProductList = () => {
   const { t } = useTranslation();
-  const { data: customers, isFetching } = useGetAllCustomersQuery("");
-  if (isFetching) {
-    return <Loading />;
-  }
+  const { data: products, isFetching } = useGetAllProductsQuery("");
   return (
     <div>
       <div>
@@ -34,37 +30,31 @@ const customerList = () => {
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.photo")}
+                  Photo
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.name")}
+                  Name
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.mobile")}
+                 Unit
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.balance")}
+                  quantity
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  {t("customer.customerList.table.due")}
-                </th>
-                <th
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {t("customer.customerList.table.address")}
+                 sellingPrice
                 </th>
                 <th
                   scope="col"
@@ -76,7 +66,7 @@ const customerList = () => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-100">
               {
-                customers?.data?.map((item: any) => (
+                products?.data?.map((item: any) => (
                   <tr className="hover:bg-gray-50 transition duration-200">
                     <td className="p-2 m-2 whitespace-nowrap text-sm font-medium text-gray-900">
                       <img
@@ -148,7 +138,6 @@ const customerList = () => {
                 ))
               }
             </tbody>
-
           </table>
         </div>
       </div>
@@ -156,4 +145,4 @@ const customerList = () => {
   );
 };
 
-export default customerList;
+export default ProductList;

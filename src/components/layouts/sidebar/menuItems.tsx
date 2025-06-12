@@ -31,12 +31,12 @@ export const getMenuItems = (t: (key: string) => string) => [
       {
         label: t("sidebarMenu.productManagement.subItems.addProduct"),
         icon: <IoBagAdd />,
-        link: "/add-product",
+        link: "/product-management/add-product",
       },
       {
         label: t("sidebarMenu.productManagement.subItems.productList"),
         icon: <HiSquare3Stack3D />,
-        link: "/product-list",
+        link: "/product-management",
       },
       {
         label: t("sidebarMenu.productManagement.subItems.printLabels"),

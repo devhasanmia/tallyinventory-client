@@ -7,6 +7,7 @@ import Registration from "../pages/auth/Registration";
 import OtpVerify from "../pages/auth/OtpVerify";
 import ProtectedRoute from "../components/layouts/ProtectedRoute";
 import OtpProtectedRoute from "../components/layouts/OtpVerificationProtector";
+import ProductList from "../pages/products/ProductList";
 
 // Lazy-loaded pages
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -42,8 +43,13 @@ const router = createBrowserRouter([
           { path: "add-category", element: withSuspense(<AddCategory />) }, // /category/add-category
         ],
       },
-
-      { path: "add-product", element: withSuspense(<ProductForm />) },
+      {
+        path: "product-management",
+        children: [
+          { path: "", element: withSuspense(<ProductList />) },
+          { path: "add-product", element: withSuspense(<ProductForm />) },
+        ],
+      },
       { path: "brand", element: withSuspense(<Brand />) },
       { path: "unit", element: withSuspense(<Unit />) },
       { path: "settings", element: <h1>Settings</h1> },
@@ -70,5 +76,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-
-export default router
+export default router;
