@@ -83,7 +83,7 @@
   },
   "sidebarMenu": {
     "dashboard": "Dashboard",
-    "sale": "Sale",
+    "pos": "POS",
     "productManagement": {
       "label": "Product Management",
       "subItems": {
