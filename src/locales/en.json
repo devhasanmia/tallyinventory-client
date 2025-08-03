@@ -94,7 +94,7 @@
       }
     },
     "customerManagement": {
-      "label": "Customer Management",
+      "label": "Customer Mng",
       "subItems": {
         "addCustomer": "Add Customer",
         "customerList": "Customer List",

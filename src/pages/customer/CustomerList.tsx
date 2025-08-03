@@ -82,11 +82,7 @@ const customerList = () => {
               {customers?.data?.map((item: any) => (
                 <tr className="hover:bg-gray-50 transition duration-200">
                   <td className="p-2 m-2 whitespace-nowrap text-sm font-medium text-gray-900">
-                    <Image
-                      width={100}
-                      height={100}
-                      src={item.photo}
-                    />
+                    <Image width={100} height={100} src={item.photo} />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {item.name}

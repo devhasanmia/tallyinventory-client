@@ -17,7 +17,6 @@ const ProtectedRoute = ({ children, designation }: TProtectedRoute) => {
         }
         return <Navigate to="/login" replace={true} />;
     }
-
     return <>{children}</>;
 };
 
