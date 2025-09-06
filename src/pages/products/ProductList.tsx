@@ -4,7 +4,7 @@ import { useGetAllProductsQuery } from "../../redux/api/features/products/produc
 
 const ProductList = () => {
   const { t } = useTranslation();
-  const { data: products, isFetching } = useGetAllProductsQuery("");
+  const { data: products } = useGetAllProductsQuery("");
 
   return (
     <div className="p-4 space-y-4">

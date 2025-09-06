@@ -7,8 +7,6 @@ import {
   useGetAllUnitsQuery,
 } from "../redux/api/features/units/unitApi";
 import { toast } from "sonner";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import InvoiceDocument from "./NotFound";
 
 const Unit = () => {
   const [open, setOpen] = useState(false);
@@ -23,9 +21,8 @@ const Unit = () => {
   const {
     data: units,
     isLoading: unitsLoading,
-    isFetching: unitsFetching,
   } = useGetAllUnitsQuery("");
-  const [createUnit, { isLoading, isSuccess }] = useCreateUnitMutation();
+  const [createUnit, { isLoading }] = useCreateUnitMutation();
   const [deleteUnit] = useDeleteUnitMutation();
   type Inputs = {
     name: string;
@@ -65,7 +62,7 @@ const Unit = () => {
         </div>
       </div>
       <br />
-   
+
 
       <div className="w-full overflow-x-auto rounded-lg shadow-md">
         <table className="min-w-full divide-y divide-gray-200">

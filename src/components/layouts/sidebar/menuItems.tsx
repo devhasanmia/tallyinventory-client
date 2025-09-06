@@ -19,11 +19,6 @@ export const getMenuItems = (t: (key: string) => string) => [
     label: t("sidebarMenu.dashboard"),
     link: "/dashboard",
   },
-  // {
-  //   icon: <AiFillDashboard />,
-  //   label: t("sidebarMenu.pos"),
-  //   link: "/pos",
-  // },
   {
     icon: <AiFillProduct />,
     label: t("sidebarMenu.productManagement.label"),
