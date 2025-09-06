@@ -9,6 +9,7 @@ import ProtectedRoute from "../components/layouts/ProtectedRoute";
 import OtpProtectedRoute from "../components/layouts/OtpVerificationProtector";
 import ProductList from "../pages/products/ProductList";
 import Pos from "../pages/pos/Pos";
+import AuthLayout from "../components/layouts/AuthAdmin/AuthLayout";
 
 // Lazy-loaded pages
 const Dashboard = lazy(() => import("../pages/Dashboard"));
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <ProtectedRoute>{withSuspense(<AdminDashboard />)}</ProtectedRoute>
+      <ProtectedRoute>{withSuspense(<AuthLayout />)}</ProtectedRoute>
     ),
     children: [
       { path: "", element: withSuspense(<Dashboard />) },

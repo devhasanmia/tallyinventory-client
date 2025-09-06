@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { getTodayDate } from "../../../utils/date/getTodayDate";
 import { Link, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { getMenuItems } from "./menuItems";
 import { useGetUserQuery } from "../../../redux/api/features/auth/authApi";
 import { useAppDispatch } from "../../../redux/hooks";
 import { logout } from "../../../redux/api/features/auth/authSlice";
-import { FiChevronDown, FiChevronRight, FiLogOut } from "react-icons/fi";
+import { FiChevronDown, FiChevronRight, FiLogOut, FiX } from "react-icons/fi";
 
-const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
+const Sidebar = ({ isOpen, setSidebarOpen }: { isOpen: boolean; setSidebarOpen: any }) => {
   const { t } = useTranslation();
   const items = getMenuItems(t);
   const { data: userData } = useGetUserQuery("");
@@ -23,11 +22,18 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
 
   return (
     <aside
-      id="sidebar"
-      className={`bg-white text-gray-800 ${
-        isOpen ? "w-64" : "w-0"
-      } flex flex-col justify-between transition-all duration-300 overflow-hidden shadow-lg border-r border-gray-200`}
+      className={`fixed lg:static top-0 left-0 h-full bg-white text-gray-800 z-50 
+        transform ${isOpen ? "translate-x-0" : "-translate-x-full"} 
+        lg:translate-x-0 w-64 flex flex-col justify-between 
+        transition-transform duration-300 shadow-lg border-r border-gray-200`}
     >
+      {/* Close Button (Mobile Only) */}
+      <div className="lg:hidden flex justify-end p-3">
+        <button onClick={() => setSidebarOpen(false)}>
+          <FiX className="w-6 h-6 text-gray-600" />
+        </button>
+      </div>
+
       {/* Top: Profile */}
       <div>
         <div className="p-4 border-b border-gray-200 flex items-center gap-3">
@@ -86,22 +92,16 @@ const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
                   <>
                     <button
                       onClick={() =>
-                        setOpenSubmenuIndex(
-                          openSubmenuIndex === index ? null : index
-                        )
+                        setOpenSubmenuIndex(openSubmenuIndex === index ? null : index)
                       }
                       className={`flex items-center justify-between w-full p-3 rounded-lg hover:bg-blue-50 focus:outline-none transition-colors duration-200 ${
-                        openSubmenuIndex === index
-                          ? "bg-blue-50 text-blue-600"
-                          : ""
+                        openSubmenuIndex === index ? "bg-blue-50 text-blue-600" : ""
                       }`}
                     >
                       <span className="flex items-center">
                         <span
                           className={`mr-3 text-lg ${
-                            openSubmenuIndex === index
-                              ? "text-blue-500"
-                              : "text-gray-500"
+                            openSubmenuIndex === index ? "text-blue-500" : "text-gray-500"
                           }`}
                         >
                           {item.icon}

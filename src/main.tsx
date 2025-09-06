@@ -6,6 +6,7 @@ import { store } from './redux/store.ts'
 import { RouterProvider } from 'react-router'
 import router from './router/index.tsx'
 import { Toaster } from 'sonner'
+import "../src/styles/dashboard.css"
 
 
 createRoot(document.getElementById('root')!).render(

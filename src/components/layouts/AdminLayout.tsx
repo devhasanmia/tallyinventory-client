@@ -4,28 +4,44 @@ import { Outlet } from "react-router";
 import { useTranslation } from "react-i18next";
 import "../../i18n";
 import { useGetUserQuery } from "../../redux/api/features/auth/authApi";
+
 const AdminDashboard = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
   const { i18n } = useTranslation();
+  const { data: userData } = useGetUserQuery("");
 
   const switchLanguage = (lng: any) => {
     i18n.changeLanguage(lng);
   };
-  const { data: userData } = useGetUserQuery("")
+
   return (
     <div className="min-h-screen flex bg-gray-50 w-full">
-      {/* Sidebar Start */}
-      <Sidebar isOpen={isSidebarOpen} />
-      {/* Sidebar End */}
-      {/* Main Content Start */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header Start */}
-        <header className="bg-white shadow-sm top-0 z-30">
+      {/* Sidebar */}
+      <Sidebar isOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
+
+      {/* Overlay for small devices */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Header */}
+        <header
+          className={`
+            bg-white shadow-sm z-50 
+            ${isSidebarOpen ? "fixed" : "lg:static"} 
+            top-0 left-0 right-0
+          `}
+        >
           <div className="flex items-center justify-between p-4">
             {/* Sidebar Toggle Button */}
             <button
               onClick={() => setSidebarOpen(!isSidebarOpen)}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-all duration-300"
+              className="p-2 rounded-lg hover:bg-gray-100 transition-all duration-300 lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,12 +82,11 @@ const AdminDashboard = () => {
             </div>
           </div>
         </header>
-        {/* Header End */}
-        {/* Main Content Start */}
-        <main className="p-6 overflow-x-hidden">
+
+        {/* Main Content */}
+        <main className="p-6 overflow-x-hidden lg:mt-0 mt-16">
           <Outlet />
         </main>
-        {/* Main Content End */}
       </div>
     </div>
   );
